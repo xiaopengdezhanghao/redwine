@@ -53,11 +53,11 @@ const api_lists = {
 	"today_profit":'Statistics/todayLoss',// 今日盈亏
 	"index":'Shop_goods/index',//首页
 	"magse":"Shop_goods/details",//详情页
-	"order":"Shop_order/buy_order",//订单页
+	"order":"Shop_order/buy_order",//确认订单
 	"details":"Shop_order/details",//信息页面
 	"addrea":"Shop_order/member_add_address",//添加用户
 	"member": "Shop_order/member_address",
-
+	"shop_order_index":"Shop_order/index",
 
 
 	"activity":'Activity/index',//活动列表

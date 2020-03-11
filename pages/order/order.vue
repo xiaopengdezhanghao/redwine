@@ -9,7 +9,7 @@
 		@clickRight="right">
 		</uni-nav-bar>
 		<view style="width: 750rpx; display: flex;flex-direction: column;align-items: center;">
-			<uni-segmented-control :current="current" :values="items" @clickItem="onClickItem" styleType="button"></uni-segmented-control>
+			<uni-segmented-control-order :current="current" :values="items" @clickItem="onClickItem" styleType="button"></uni-segmented-control-order>
 		</view>
 		<view>
 			<view v-show="current === 0">
@@ -27,14 +27,14 @@
 
 <script>
 	import uniNavBar from "@/components/uni-nav-bar/uni-nav-bar.vue"
-	import uniSegmentedControl from "@/components/uni-segmented-control/uni-segmented-control-order.vue";
+	import uniSegmentedControlOrder from "../../components/uni-segmented-control/uni-segmented-control-order.vue";
 	import collectGoods from "./collectgoods.vue";
 	import shipmentsGoods from "./shipments.vue";
 	import allGoods from "./allgoods.vue";
 	export default {
 		components: {
 			uniNavBar,
-			uniSegmentedControl,
+			uniSegmentedControlOrder,
 			collectGoods,
 			shipmentsGoods,
 			allGoods
