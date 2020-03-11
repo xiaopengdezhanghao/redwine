@@ -9,8 +9,8 @@ var hostname = window.location.hostname;
 // 	var baseUrl = ishttps+'//api2.'+domain+'/api/hbcloud/';  
 // }
 if(window.location.host.indexOf('localhost')!=-1||window.location.host.indexOf('192.')!=-1){
-	var baseUrl = 'http://api2.hengbocloud1.com/api/hbcloud/';
-	// var baseUrl = 'http://api2.long9028.com/api/hbcloud/';
+	// var baseUrl = 'http://api2.hengbocloud1.com/api/hbcloud/';
+	var baseUrl = 'http://api2.long9028.com/api/hbcloud/';
 	// var domain = '24030.com';
 }else{
 	var domain = hostname.substring(hostname.indexOf('.')+1,hostname.length);
