@@ -103,7 +103,7 @@
 		</view>
 		<view class="uni-loadmore" v-if="showLoadMore">{{loadMoreText}}</view>
 		<fr-loading></fr-loading>
-		<pageFooter></pageFooter>
+		<!-- <pageFooter></pageFooter> -->
 	</view>
 </template>
 
@@ -213,7 +213,7 @@
 						this.setData(data)
 					}
 				}
-			
+				this.$store.commit("switch_loading",true);
 				this.$ajax.get({
 					url: this.$service.api_lists.agent_userreport,
 					data: {

@@ -4,7 +4,7 @@
 			<view class="uni-card">
 				<view class="uni-card-content">
 					<view class="uni-card-content-inner">
-						<uni-segmented-control :current="current" :values="items" v-on:clickItem="onClickItem" styleType="text"></uni-segmented-control>
+						<uni-segmented-control :current="current" :values="items" @clickItem="onClickItem" styleType="text"></uni-segmented-control>
 					</view>
 				</view>
 			</view>
@@ -501,7 +501,8 @@
 					this.$refs.qrcode.creatQrcode();
 				}, 100);
 			},
-			onClickItem(index) {
+			onClickItem(e) {
+				let index = e.currentIndex;
 				if (this.current !== index) {
 					this.current = index;
 				}

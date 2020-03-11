@@ -50,22 +50,17 @@
 				</view>
 			</view>
 		</view>
-		<pageFooter></pageFooter>
+		<!-- <pageFooter></pageFooter> -->
 	</view>
 </template>
 
 <script>
-	import uniSegmentedControl from "@/components/uni-segmented-control/uni-segmented-control.vue"
 	export default {
 		data() {
 			return {
 				current: 0,
 				index: 0
 			};
-		},
-		components: {
-			
-			uniSegmentedControl
 		},
 		methods: {
 		}

@@ -29,7 +29,7 @@
 		</view>
 		<view style="background-color: #f1f1f1;;width: 750rpx; height: 34rpx;"></view>
 		<view class="list">
-			<navigator  url="../agent/agent" hover-class="navigator-hover">
+			<navigator  :url="userinfo.proxy == 1?'../agent/agent':'../agent/explain'" hover-class="navigator-hover">
 				<view class="li">
 					<view class="icon">
 						<image style="width: 100%; height: 100%;" src="../../static/user/icon_dl@2x.png"></image>

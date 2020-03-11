@@ -28,7 +28,7 @@
 					<view class="uni-list-cell" hover-class="uni-list-cell-hover">
 						<view class="uni-list-cell-navigate uni-navigate-right">
 							<view>手机号</view>
-							<view><input class="uni-input" type="text" name="mobile" placeholder="请输入手机号"  @blur="inputBlur" v-model="mobile" :disabled="this.$store.state.userinfo.phone !== ''" value=""/></view>
+							<view><input class="uni-input" type="text"  name="mobile" placeholder="请输入手机号"  @blur="inputBlur" v-model="mobile" :disabled="this.$store.state.userinfo.tel !== ''" value=""/></view>
 						</view>
 					</view>
 					<view class="uni-list-cell" hover-class="uni-list-cell-hover">
@@ -76,7 +76,7 @@
 			return {
 				index:this.$store.state.userinfo.sex,
 				nickname:this.$store.state.userinfo.username,
-				mobile:this.$store.state.userinfo.phone,
+				mobile:this.$store.state.userinfo.tel,
 				qq:this.$store.state.userinfo.qq,
 				wechat:this.$store.state.userinfo.weixin,
 				realname:this.$store.state.userinfo.userbankname,

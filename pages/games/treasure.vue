@@ -66,7 +66,7 @@
 						<text class="input-text">买入数量</text>
 						<input class="input" type="number" @blur="onBlur"  @confirm="confirm" @input="updateAmount" :value="amount" :min="0.01" :max="100000" placeholder="请输入买入欢乐豆数量" />
 					</view>
-					<text class="warning-info">输入金额超出您的欢乐豆余额</text>
+					<text class="warning-info" v-if="parseFloat(userinfo.balance) < parseFloat(amount)">输入金额超出您的欢乐豆余额</text>
 					<view class="btn-result" style="margin-top: 55rpx;">
 						<view class="btn-bottom" @tap="close">
 							<image class="img" src="../../static/games/treasure/icon_qx1@2x.png" mode=""></image>
@@ -101,7 +101,8 @@
 	import uniNav from "@/components/uni-nav-bar/uni-nav-bar-treasure.vue"
 	import uniPopup from "@/components/uni-popup/uni-popup.vue"
 	import {
-		mapState
+		mapState,
+		mapMutations
 	} from 'vuex'
 	export default {
 	    components: {uniNav,uniPopup},
@@ -184,6 +185,7 @@
 			this.getOldGameInfo(1);
 		},
 		methods:{
+			...mapMutations(['userinfoarr']),
 			/*初始化画布*/
 			initCanvas(middle) {
 				let _this = this;
@@ -480,21 +482,7 @@
 								data: sendData,
 							}).then((res) => {
 								if (res.data.code == 1) {
-									// uni.setStorageSync('beeting_data', false); //存储投注的数据
-									// _self.bettingData = [];
-									// _self.betting_count = 0;
-									// const datas = uni.getStorageSync('old_game_info_' + _self.typeid);
-									// if (datas) { //取缓存过的数据投注数据
-									// 	_self.categoryList = datas.title
-									// 	_self.subCategoryData = datas.data
-									// 	_self.categoryClickMain(0);
-									// }
-									// uni.showToast({
-									// 	title: res.data.msg,
-									// 	icon: "success"
-									// })
-									// _self.loading = false
-									// _self.categoryClickMain(categoryActiveOld);
+									_self.getUserinfo();
 									_self.statuShow = false;
 									_self.initData();
 								} else {
@@ -575,6 +563,20 @@
 			initData(){
 				this.amount = 10;
 				this.selected_number(1);
+			},
+			getUserinfo(){
+				this.$ajax.get({
+					url:this.$service.api_lists.userinfo,
+					data:{}
+				}).then((res)=>{
+					if(res.data.code == 1){
+						const userinfo = uni.setStorageSync("userinfo", res.data.data);
+						this.userinfoarr(res.data.data);
+					}
+					console.log(res);
+				}).catch((err)=>{
+					console.log('request fail', err);
+				})
 			}
 		}
 	}

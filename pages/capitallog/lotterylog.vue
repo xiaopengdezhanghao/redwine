@@ -15,7 +15,7 @@
 		<view class="uni-card">
 			<view class="uni-card-content">
 				<view class="uni-card-content-inner">
-					<uni-segmented-control :current="current" :values="items" v-on:clickItem="onClickItem" styleType="text"></uni-segmented-control>
+					<uni-segmented-control :current="current" :values="items" @clickItem="onClickItem" styleType="text"></uni-segmented-control>
 				</view>
 			</view>
 		</view>
@@ -183,7 +183,8 @@
 					return;
 				})
 			},
-			onClickItem(index) {
+			onClickItem(e) {
+				let index = e.currentIndex;
 				if(index == 0){
 					this.isdraw = '';
 				}

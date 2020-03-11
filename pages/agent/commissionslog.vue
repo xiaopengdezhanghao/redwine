@@ -50,7 +50,6 @@
 </template>
 
 <script>
-	import uniSegmentedControl from "@/components/uni-segmented-control/uni-segmented-control.vue"
 	export default {
 		data() {
 			return {
@@ -94,9 +93,6 @@
 		},
 		onLoad() {
 			this.getData()
-		},
-		components: {
-			uniSegmentedControl
 		},
 		methods: {
 			trigerCollapse(id) {

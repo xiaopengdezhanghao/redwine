@@ -91,7 +91,7 @@
 			</view>
 		</view>
 		<fr-loading></fr-loading>
-		<pageFooter></pageFooter>
+		<!-- <pageFooter></pageFooter> -->
 	</view>
 </template>
 
@@ -164,6 +164,7 @@
 				if (data) { //如果有缓存过的数据 那么
 					this.setData(data)
 				}
+				this.$store.commit("switch_loading",true);
 				this.$ajax.get({
 					url: this.$service.api_lists.agent_game_report,
 					data: {type:this.type,accountsearch:this.accountsearch},
