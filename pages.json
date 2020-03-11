@@ -1,0 +1,470 @@
+{
+	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+		{
+		    "path" : "pages/home/home",
+		    "style": {
+		    	"navigationStyle":"custom",
+		    	"app-plus":{
+		    		"animationType":"zoom-out",
+		    		"animationDuration":300
+		    	}
+		    }
+		}
+        ,{
+            "path" : "pages/message/message",
+            "style": {
+            	"navigationStyle":"custom",
+            	"app-plus":{
+            		"animationType":"zoom-out",
+            		"animationDuration":300
+            	}
+            }
+        }
+        ,{
+            "path" : "pages/user/user",
+            "style": {
+            	"navigationStyle":"custom",
+            	"app-plus":{
+            		"animationType":"zoom-out",
+            		"animationDuration":300
+            	}
+            }
+        },{
+            "path" : "pages/home/shop",
+            "style": {
+            	// "navigationStyle":"custom",
+            	"app-plus":{
+            		"animationType":"zoom-out",
+            		"animationDuration":300
+            	}
+            }
+        },{
+            "path" : "pages/home/list",
+            "style": {
+            	// "navigationStyle":"custom",
+            	"app-plus":{
+            		"animationType":"zoom-out",
+            		"animationDuration":300
+            	}
+            }
+        }
+		,{
+		    "path" : "pages/home/takeas",
+		    "style": {
+		    	// "navigationStyle":"custom",
+		    	"app-plus":{
+		    		"animationType":"zoom-out",
+		    		"animationDuration":300
+		    	}
+		    }
+		},{
+		    "path" : "pages/home/tj",
+		    "style": {
+		    	// "navigationStyle":"custom",
+		    	"app-plus":{
+		    		"animationType":"zoom-out",
+		    		"animationDuration":300
+		    	}
+		    }
+		},{
+		    "path" : "pages/home/list_c",
+		    "style": {
+		    	// "navigationStyle":"custom",
+		    	"app-plus":{
+		    		"animationType":"zoom-out",
+		    		"animationDuration":300
+		    	}
+		    }
+		},
+		{
+			"path": "pages/personal/personal",
+			"style": {
+				"navigationBarTitleText": "个人资料",
+				"titleNView": {}
+			}
+		},
+        {
+            "path" : "pages/account/account",
+            "style": {
+            	"navigationBarTitleText": "账户设置",
+            	"titleNView": {}
+            }
+        }
+        ,{
+            "path" : "pages/setting/setting",
+            "style": {
+            	"navigationBarTitleText": "设置",
+            	"titleNView": {}
+            }
+        }
+        ,{
+            "path" : "pages/capitallog/capitallog",
+            "style": {
+            	"navigationBarTitleText": "资金日志",
+            	"enablePullDownRefresh": true,
+            	"app-plus": {
+            		"titleNView": {
+            			"buttons": [{
+            				"text": "筛选",
+            				"fontSize": "16px"
+            			}]
+            		}
+            	}
+            }
+        }
+		,{
+		    "path" : "pages/capitallog/withdrawlog",
+			"style": {
+				"navigationBarTitleText": "提现记录",
+				"enablePullDownRefresh": true,
+				"app-plus": {
+					"titleNView": {
+						"buttons": [{
+							"text": "筛选",
+							"fontSize": "16px"
+						}]
+					}
+				}
+			}
+		}
+		,{
+		    "path" : "pages/capitallog/rechargelog",
+			"style": {
+				"navigationBarTitleText": "充值记录",
+				"enablePullDownRefresh": true,
+				"app-plus": {
+					"titleNView": {
+						"buttons": [{
+							"text": "筛选",
+							"fontSize": "16px"
+						}]
+					}
+				}
+			}
+		}
+        ,{
+            "path" : "pages/happyfight/happyfight",
+            "style" : {
+				"navigationStyle":"custom",
+				"app-plus":{
+				"titleView":false
+				}
+			}
+        }
+        ,{
+            "path" : "pages/order/order",
+            "style" : {
+				"navigationStyle":"custom",
+				"app-plus":{
+				"titleView":false
+				}
+			}
+        }
+        ,{
+            "path" : "pages/orderdetails/orderdetails",
+            "style" : {
+            	"navigationStyle":"custom",
+            	"app-plus":{
+            	"titleView":false
+            	}
+            }
+        }
+        ,{
+            "path" : "pages/login/login",
+            "style": {
+            	"navigationBarTitleText": "登录",
+            	"app-plus": {
+            		"titleNView": {
+            			"buttons": [{
+            				"type": "close"
+            			}]
+            		}
+            	}
+            }
+        }
+        ,{
+            "path" : "pages/reg/reg",
+            "style": {
+            	"navigationBarTitleText": "注册"
+            }
+        },
+		{
+			"path": "pages/security/password",
+			"style": {
+				"navigationBarTitleText": "登录密码",
+				"titleNView": {}
+			}
+		},
+		{
+			"path": "pages/security/question",
+			"style": {
+				"navigationBarTitleText": "密保管理",
+				"titleNView": {}
+			}
+		},
+		{
+			"path": "pages/security/paypassword",
+			"style": {
+				"navigationBarTitleText": "安全密码",
+				"titleNView": {}
+			}
+		},
+		{
+			"path": "pages/security/setpaypassword",
+			"style": {
+				"navigationBarTitleText": "设置安全密码",
+				"titleNView": {}
+			}
+		},
+		{
+			"path": "pages/security/mobile",
+			"style": {
+				"navigationBarTitleText": "安全手机",
+				"titleNView": {}
+			}
+		},
+		{
+		    "path" : "pages/games/number",
+		    "style" : {
+				"navigationBarTitleText": "数字碰撞",
+		    	"navigationStyle":"custom",
+		    	"app-plus":{
+		    	"titleView":false
+		    	}
+		    }
+		},
+		{
+		    "path" : "pages/games/treasure",
+		    "style" : {
+				"navigationBarTitleText": "财富碰撞",
+		    	"navigationStyle":"custom",
+		    	"app-plus":{
+		    	"titleView":false
+		    	}
+		    }
+		},
+		{
+		    "path" : "pages/games/game_shows",
+		    "style" : {
+				"navigationBarTitleText": "玩法说明"
+		    }
+		},
+		{
+		    "path" : "pages/games/lottery_history",
+		    "style" : {
+				"navigationBarTitleText": "开奖历史"
+		    }
+		},
+		{
+			"path": "pages/capitallog/lotterylog",
+			"style": {
+				"navigationBarTitleText": "游戏记录",
+				"enablePullDownRefresh": true,
+				"app-plus": {
+					"titleNView": {
+						"buttons": [{
+							"text": "筛选",
+							"fontSize": "16px"
+						}]
+					}
+				}
+			}
+		},
+		{
+			"path": "pages/capitallog/threelog",
+			"style": {
+				"navigationBarTitleText": "游戏记录",
+				"enablePullDownRefresh": true,
+				"app-plus": {
+					"titleNView": {
+						"buttons": [{
+							"text": "筛选",
+							"fontSize": "16px"
+						}]
+					}
+				}
+			}
+		},
+		{
+			"path": "pages/news/category",
+			"style": {
+				"navigationBarTitleText": "帮助分类",
+				"app-plus": {
+					"titleNView": {}
+				}
+			}
+		},
+		{
+			"path": "pages/news/news",
+			"style": {
+				"navigationBarTitleText": "帮助中心",
+				"app-plus": {
+					"titleNView": {}
+				}
+			}
+		},
+		{
+			"path": "pages/news/detail",
+			"style": {
+				"navigationBarTitleText": "文章详情页",
+				"titleNView": {}
+			}
+		},
+		{
+			"path": "pages/bankcards/bankcards",
+			"style": {
+				"navigationBarTitleText": "银行卡管理",
+				"titleNView": {}
+			}
+		},		
+		{
+			"path": "pages/bankcards/add",
+			"style": {
+				"navigationBarTitleText": "新增银行卡",
+				"titleNView": {}
+			}
+		},
+		{
+			"path": "pages/bankcards/edit",
+			"style": {
+				"navigationBarTitleText": "编辑银行卡",
+				"titleNView": {}
+			}
+		},
+		{
+			"path": "pages/agent/agent",
+			"style": {
+				"navigationBarTitleText": "代理中心",
+				"titleNView": {}
+			}
+		},
+		{
+			"path": "pages/agent/explain",
+			"style": {
+				"navigationBarTitleText": "代理说明",
+				"titleNView": {}
+			}
+		},
+		{
+			"path": "pages/agent/adduser",
+			"style": {
+				"navigationBarTitleText": "下级开户",
+				"enablePullDownRefresh": true,
+				"titleNView": {}
+			}
+		},
+		{
+			"path": "pages/agent/agentreport",
+			"style": {
+				"navigationBarTitleText": "团队报表",
+				"enablePullDownRefresh": true
+			}
+		},
+		{
+			"path": "pages/agent/userreport",
+			"style": {
+				"navigationBarTitleText": "下级报表",
+				"enablePullDownRefresh": true,
+				"app-plus": {
+					"titleNView": {
+						"buttons": [{
+							"text": "筛选",
+							"fontSize": "16px"
+						}]
+					}
+				}
+			}
+		},
+		{
+			"path": "pages/agent/gamereport",
+			"style": {
+				"navigationBarTitleText": "游戏报表",
+				"app-plus": {
+					"titleNView": {
+						"buttons": [{
+							"text": "筛选",
+							"fontSize": "16px"
+						}]
+					}
+				}
+			}
+		},
+		{
+			"path": "pages/agent/gameusers",
+			"style": {
+				"navigationBarTitleText": "AG报表",
+				"enablePullDownRefresh": true,
+				"app-plus": {
+					"titleNView": {
+						"buttons": [{
+							"text": "筛选",
+							"fontSize": "16px"
+						}]
+					}
+				}
+			}
+		},
+		{
+			"path": "pages/agent/commissionslog",
+			"style": {
+				"navigationBarTitleText": "返佣记录",
+				"enablePullDownRefresh": true,
+				"app-plus": {
+					"titleNView": {
+						"buttons": [{
+							"text": "筛选",
+							"fontSize": "16px"
+						}]
+					}
+				}
+			}
+		},
+		{
+			"path": "pages/agent/team",
+			"style": {
+				"navigationBarTitleText": "团队管理",
+				"enablePullDownRefresh": true,
+				"app-plus": {
+					"titleNView": {
+						"buttons": [{
+							"text": "排序",
+							"fontSize": "16px"
+						}]
+					}
+				}
+			}
+		}
+    ],
+	"tabBar": {
+		"color": "#A5A6AB",
+		"selectedColor": "#111734",
+		"backgroundColor": "#ffffff",
+		"borderStyle":"white",
+		"height":"200",
+		"list": [{
+				"pagePath": "pages/home/home",
+				"text": "首页",
+				"iconPath": "static/icon/sy_wx@2x.png",
+				"selectedIconPath": "static/icon/sy_yx@2x.png"
+			},
+			{
+				"pagePath": "pages/message/message",
+				"text": "消息",
+				"iconPath": "static/icon/xx_wx@2x.png",
+				"selectedIconPath": "static/icon/xx_yx@2x.png"
+			},
+			{
+				"pagePath": "pages/user/user",
+				"text": "我的",
+				"iconPath": "static/icon/wd_wx@2x.png",
+				"selectedIconPath": "static/icon/wd_yx@2x.png"
+			}
+		]
+	},
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "红酒",
+		"navigationBarBackgroundColor": "#F8F8F8",
+		"backgroundColor": "#F8F8F8"
+	}
+}
