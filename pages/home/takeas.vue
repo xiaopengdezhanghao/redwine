@@ -15,6 +15,9 @@
 				编辑
 			</view>
 		</view>
+		<view class="nav_d" @click="nav_tj">
+			添加新地址
+		</view>
 	</view>
 </template>
 
@@ -31,11 +34,37 @@
 					'url':"./tj"
 				})
 			}
+		},
+		onLoad() {
+			this.$ajax.post({
+				url:this.$service.api_lists.member,
+				data:{
+					page:5
+				}
+			}).then((res)=>{
+				console.log(res)
+			})
 		}
 	}
 </script>
 
 <style>
+	.nav_d{
+		width:686rpx;
+		height:78rpx;
+		background:rgba(255,137,0,1);
+		box-shadow:0px 5rpx 17rpx 1rpx rgba(255,137,0,0.3);
+		border-radius:39rpx;
+		position: fixed;
+		bottom: 39rpx;
+		left: 32rpx;
+		font-size:32rpx;
+		font-family:PingFang SC;
+		font-weight:500;
+		color:rgba(255,255,255,1);
+		text-align: center;
+		line-height: 78rpx;
+	}
 	.dz{
 		font-size:24rpx;
 		font-family:PingFang SC;

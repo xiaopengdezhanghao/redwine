@@ -1,17 +1,17 @@
 <template>
 	<view>
 		<view>
-			<image src="../../static/img/banner@2x.png" mode="" style="width: 750rpx;height: 480rpx;"></image>
+			<image :src="image" mode="" style="width: 750rpx;height: 480rpx;"></image>
 			<view>
 				<view style="display: flex;justify-content: space-between;">
-					<view class="price">￥10000.00/瓶</view>
+					<view class="price">￥{{price}}/瓶</view>
 					<view style="margin-top: 8rpx;margin-right: 32rpx;">
 						<image src="../../static/icon/hld@2x.png" mode="" style="width: 32rpx;height: 28rpx;margin-right: 8rpx;vertical-align:middle"></image>
 						<span class="sp">赠送10000欢乐豆</span>
 					</view>
 				</view>
-				<view class="shop_1">WINEBOSS西班牙干红</view>
-				<view class="shop_2">WINEBOSS西班牙原装进口蜡封款红酒干红葡萄酒</view>
+				<view class="shop_1">{{title}}</view>
+				<view class="shop_2">{{title}}</view>
 				<view class="kd">
 					<view class="kd1">快递费：0.00元</view>
 					<view class="kd2">月销量：59</view>
@@ -20,7 +20,7 @@
 		</view>
 		<!-- 富文本商品详情 -->
 		<view>
-			<editor placeholder="aaaaaa" read-only="true" @ready="onEditorReady"></editor>
+			<rich-text :nodes="content"></rich-text>
 		</view>
 		<!-- 底部导航 -->
 		<view style="position: fixed;bottom: 0rpx;z-index: 999;display: flex;">
@@ -39,7 +39,11 @@
 	export default {
 		data() {
 			return {
-				
+				id:"",
+				price:"",
+				title:"",
+				image:"",
+				content:""
 			}
 		},
 		methods: {
@@ -48,11 +52,29 @@
 				
 			},
 			nav_lis(){
-				console.log("为啥挑不过去");
+				var a=this.id
 				uni.navigateTo({
-					url:"./list"
+					url:"./list?id="+a
 				})
 			}
+		},
+		onLoad(id) {
+			this.id=id.id;
+			this.$ajax.get({
+				url:this.$service.api_lists.magse,
+				data:{
+					id:this.id
+				}
+			}).then((res)=>{
+				console.log(res)
+				var a=res.data.data;
+				if(res.data.code==1){
+					this.price=a.price;
+					this.title=a.title;
+					this.image=a.image;
+					this.content=a.content;
+				}
+			})
 		}
 	}
 </script>

@@ -51,7 +51,12 @@ const api_lists = {
 	"set_pay_password":'Members/setPayPassword',//设置支付密码
 	"old_cp_buy":'Game/oldBuy',//投注
 	"today_profit":'Statistics/todayLoss',// 今日盈亏
-
+	"index":'Shop_goods/index',//首页
+	"magse":"Shop_goods/details",//详情页
+	"order":"Shop_order/buy_order",//订单页
+	"details":"Shop_order/details",//信息页面
+	"addrea":"Shop_order/member_add_address",//添加用户
+	"member": "Shop_order/member_address",
 
 
 

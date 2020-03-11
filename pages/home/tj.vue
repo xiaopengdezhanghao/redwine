@@ -2,27 +2,55 @@
 	<view>
 		<view class="all">
 			<view class="all_l">收货人</view>
-			<input type="text" value=""  placeholder="请填写收货人姓名"/>
+			<input type="text" v-model="name"  placeholder="请填写收货人姓名"/>
 		</view>
 		<view class="all">
 			<view class="all_l">手机号码</view>
-			<input type="text" value="" placeholder="请填写收货人手机号"/>
+			<input type="text" v-model="phone" placeholder="请填写收货人手机号"/>
 		</view>
 		<view class="all">
 			<view class="all_l">所在地区</view>
-			<input type="text" value="" placeholder="请选择"/>
+			<input type="text" v-model="address" placeholder="请填写地区"/>
 		</view>
 		<view class="all">
 			<view class="all_l">详细地址</view>
-			<input type="text" value="" placeholder="如道路，门牌号，小区，楼栋号等"/>
+			<input type="text" v-model="defaults" placeholder="如道路，门牌号，小区，楼栋号等"/>
 		</view>
-		<view class="nav_d">
+		<view class="nav_d" @click="addres">
 			保存
 		</view>
 	</view>
 </template>
 
 <script>
+	export default {
+		data() {
+			return {
+				name:"",
+				phone:"",
+				address:"",
+				defaults:""
+			}
+		},
+		methods: {
+			addres(){
+				this.$ajax.post({
+					url:this.$service.api_lists.addrea,
+					data:{
+						name:this.name,
+						phone:this.phone,
+						address:this.address+this.defaults,
+						default:1
+					}
+				}).then((res)=>{
+					console.log(res)
+				})
+			}
+		},
+		onLoad() {
+
+		}
+	}
 </script>
 
 <style>

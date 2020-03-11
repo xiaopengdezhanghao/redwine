@@ -10,11 +10,13 @@
 		<view>
 			<image src="../../static/index/card_top@2x.png" mode=""  style="width: 100%;"  @click="nav"></image>
 		</view>
-		<view class="shop">
-			<image src="../../static/index/card_1_1@3x.png" mode="" class="shop_img img_l" @click="nav"></image>
-			<image src="../../static/index/card_1_1@3x.png" mode="" class="shop_img"  @click="nav"></image>
-			<image src="../../static/index/card_1_1@3x.png" mode="" class="shop_img img_l"   @click="nav"></image>
-			<image src="../../static/index/card_1_1@3x.png" mode="" class="shop_img" @click="nav"></image>
+		<view class="shop" >
+			<view style="width: 49%;">
+				<image :src="data.image" v-for="(data,index) of src" :key="index" v-if="index%2==0" mode="" class="shop_img img_l" @click="nav(data.id)"></image>
+			</view>
+			<view style="width: 49%;">
+				<image :src="data.image" v-for="(data,index) of src" :key="index" v-if="index%2!=0"   mode="" class="shop_img"  @click="nav(data.id)"></image>				
+			</view>	
 		</view>
 		<!-- 底部空白 -->
 		<view style="width: 750rpx;height: 26rpx;"></view>
@@ -26,15 +28,38 @@
 	export default {
 		data() {
 			return {
-
+				time:"",
+				src:[],
 			}
 		},
 		methods: {
-			nav(){
+			nav(id){
 				uni.navigateTo({
-					'url':"./shop"
+					'url':"./shop?id="+id
 				})
 			}
+		},
+		onShow() {
+			this.$ajax.get({
+				url: this.$service.api_lists.index,
+				data:{
+					size:10,
+					page:1,
+					time:""
+				}
+			}).then((res) => {
+				if(res.data.code==1){
+					this.src=res.data.data
+				}
+			})
+			// this.$ajax.get({
+			// 	url: this.$service.api_lists.message,
+			// 	data:{
+			// 		page:1
+			// 	}
+			// }).then((res) => {
+			// 	console.log(res)
+			// })
 		}
 	}
 </script>

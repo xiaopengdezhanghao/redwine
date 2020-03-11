@@ -21,12 +21,12 @@
 			<!-- 最顶部标题 -->
 			<view style="display: flex;">
 				<view style="margin-top: 36rpx;margin-left: 32rpx;">
-					<image src="../../static/img/banner@2x.png" mode="" style="width: 126rpx;height: 126rpx;"></image>
+					<image :src="image" mode="" style="width: 126rpx;height: 126rpx;"></image>
 				</view>
 				<view style="margin-top: 46rpx;margin-left: 17rpx;">
-					<view class="title">WINEBOSS原装干红</view>
+					<view class="title">{{title}}</view>
 					<view style="margin-top: 30rpx;">
-						<span class="title_1">2000.00</span>
+						<span class="title_1">{{price}}</span>
 						<span class="title_2">x1</span>
 					</view>
 				</view>
@@ -35,15 +35,15 @@
 			<view class="sl">
 				<view class="shopnum">购买数量</view>
 				<view style="display: flex;">
-					<view class="jh">-</view>
-					<input type="text" value="1" class="sr"/>
-					<view class="jah">+</view>
+					<view class="jh"  @click="jia(-1)">-</view>
+					<input type="text" :value="value" class="sr"/>
+					<view class="jah" @click="jia(1)">+</view>
 				</view>
 			</view>
 			<!-- 赠送欢乐豆 -->
 			<view class="hld">
 				<view class="left">赠送欢乐豆</view>
-				<view class="rigth">2000</view>
+				<view class="rigth">{{prices}}</view>
 			</view>
 			<!-- 配送方式 -->
 			<view class="ps">
@@ -54,7 +54,7 @@
 			<view class="db">
 				<view class="left">订单备注</view>
 				<view>
-					<input type="text" value="" placeholder="备注,请先与平台协商一致" class="rigth" style="width: 360rpx;">
+					<input type="text" :value="valus" placeholder="备注,请先与平台协商一致" class="rigth" style="width: 360rpx;">
 				</view>
 			</view>
 			<!-- 小计 -->
@@ -64,15 +64,15 @@
 					<span>小计:</span>
 				</view>
 				<view style="color: #F33628;">
-					￥ 2000.00
+					￥ {{prices}}
 				</view>
 			</view>
 		</view>
 		<!-- 底部 -->
 		<view class="footer"> 
-			<view style="display: flex;font-size: 24rpx;margin-left: 199rpx;">
+			<view style="display: flex;font-size: 24rpx;margin-left: 180rpx;">
 				<view style="color: #6C6E70;padding-top: 40rpx;">共一件, 合计</view>
-				<view style="color: #F33628;padding-top: 40rpx;">￥2000.00</view>
+				<view style="color: #F33628;padding-top: 40rpx;">￥{{prices}}</view>
 			</view>
 			<view class="tj" @click="nav_t">提交订单</view>
 		</view>
@@ -83,7 +83,13 @@
 	export default {
 		data() {
 			return {
-	
+				id:"",
+				image:"",
+				title:"",
+				price:"",
+				value:1,
+				prices:"",
+				valus:""
 			}
 		},
 		methods: {
@@ -98,10 +104,66 @@
 				})
 			},
 			nav_t(){
-				uni.navigateTo({
-					'url':"./list_c"
+				this.$ajax.post({
+					url:this.$service.api_lists.order,
+					data:{
+						goods_id:this.id,
+						contactor:1,
+						contactor_phone:1833333333333,
+						address:1,
+						saler_remark:"aaaaa",
+						
+					}
+				}).then((res)=>{
+					if(res.data.code==1){
+						uni.navigateTo({
+							'url':"./list_c"
+						})
+					}else if(res.data.code==0){
+						uni.navigateTo({
+							'url':"../login/login"
+						})
+					}
 				})
+
+			},
+			jia(n){
+				if(n==-1){
+					if(this.value<2){
+						this.value=1
+					}else{
+						this.value+=n;
+						this.prices=this.value*this.price;
+					}
+				}else{
+						this.value+=n;
+						this.prices=this.value*this.price;
+					}
 			}
+		},
+		onLoad(id) {
+			// if (!this.$store.state.hasLogin) {
+			// 	uni.reLaunch({
+			// 		url: '../login/login'
+			// 		});
+			// 		return;
+			// 	}
+			this.id=id.id
+			this.$ajax.get({
+				url:this.$service.api_lists.magse,
+				data:{
+					id:this.id
+				}
+			}).then((res)=>{
+				console.log(res)
+				var a=res.data.data;
+				if(res.data.code==1){
+					this.image=a.image;
+					this.title=a.title;
+					this.price=a.price;
+					this.prices=a.price;
+				}
+			})
 		}
 	}
 </script>

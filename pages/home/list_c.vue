@@ -20,8 +20,8 @@
 		},
 		methods: {
 			nav_to(){
-				uni.navigateTo({
-					'url':"./home"
+				uni.switchTab({
+					url:"./home"
 				})
 			}
 		}

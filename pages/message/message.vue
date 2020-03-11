@@ -18,7 +18,7 @@
 		</view>
 		
 		<!-- 物流进程 -->
-		<view style="display: none;">
+		<view v-bind:class="{ds:isarry}">
 			<!-- 系统通知 -->
 			<view class="xt">
 				系统通知:
@@ -47,7 +47,7 @@
 		</view>
 		
 		<!-- 订单详情 -->
-		<view style="display: none;">
+		<view v-bind:class="{ds:isarry}">
 			<!-- 系统通知 -->
 			<view class="xt">
 				订单已发货
@@ -73,16 +73,35 @@
 	export default {
 		data() {
 			return {
-				msg:"亲爱的用户，您购买的商品WINEBOSS西班牙原装进口蜡封款红酒干红葡萄酒已为您发货。消息内容消息内容消息内容消息内容消息内容消息内容消息内容消息内容消"
+				msg:"亲爱的用户，您购买的商品WINEBOSS西班牙原装进口蜡封款红酒干红葡萄酒已为您发货。消息内容消息内容消息内容消息内容消息内容消息内容消息内容消息内容消",
+				isarry:true
 			}
 		},
 		methods: {
 			
+		},
+		onShow() {
+			this.$ajax.get({
+				url: this.$service.api_lists.details,
+				data:{
+					page:"5"
+				}
+			}).then((res) => {
+				console.log(res)
+				if(res.data.code==0){
+					this.isarry=true
+				}else{
+					this.isarry=false
+				}
+			})
 		}
 	}
 </script>
 
 <style>
+	.ds{
+		display: none;
+	}
 	.msgs{
 		width:675rpx;
 		height:83rpx;
