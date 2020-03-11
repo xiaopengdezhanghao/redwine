@@ -4,29 +4,27 @@
 			<image class="img" src="../../static/happy/组32@3x.png" mode=""></image>
 			<view class="uni-top-face">
 				<view class="uni-top-face-img">
-					<image class="img" src="../../static/user/img_tx@2x.png" mode=""></image>
+					<image style="width: 100%; height: 100%;border-radius: 50%;" :src="userinfo.face == '' || userinfo.face == '0' ? '../../static/user/face/1.jpg':'../../static/user/face/'+userinfo.face+'.jpg'" mode=""></image>
 				</view>
 				<view class="uni-top-face-text">
-					<text style="height: 27rpx;line-height: 27rpx;margin-bottom: 22rpx;">王麻子家的花花</text>
-					<text style="height: 27rpx;line-height: 27rpx;font-size:24rpx;font-family:PingFang SC;">欢乐豆：2000.00</text>
+					<text style="height: 27rpx;line-height: 27rpx;margin-bottom: 22rpx;">{{userinfo.username}}</text>
+					<text style="height: 27rpx;line-height: 27rpx;font-size:24rpx;font-family:PingFang SC;">欢乐豆：{{userinfo.balance}}</text>
 				</view>
 			</view>
 			<view class="uni-top-record" @tap="topage">游戏记录</view>
 		</view>
-<!-- 		<block v-for="(item,index) in lottery" :key='index'>
-			<view class="uni-happy-box2" v-if="item.title == '财富碰撞'"  @click="gotonav(1,item.id,item.typeid)">
-				<image class="img" src="../../static/happy/img_cfpz@3x.png" mode=""></image>
-			</view>
-			<view class="uni-happy-box3" v-if="item.title == '数字碰撞'" @click="gotonav(2,item.id,item.typeid)">
-				<image class="img" src="../../static/happy/img_szpz@3x.png" mode=""></image>
-			</view>
-		</block> -->
-		<view class="uni-happy-box2"  @click="gotonav(1,129,'ssc','txssc1')">
+		<view class="uni-happy-box2"  @click="gotonav(1)">
+			<image class="img" src="../../static/happy/img_cfpz@3x.png" mode=""></image>
+		</view>
+		<view class="uni-happy-box3" @click="gotonav(2)">
+			<image class="img" src="../../static/happy/img_szpz@3x.png" mode=""></image>
+		</view>
+<!-- 		<view class="uni-happy-box2"  @click="gotonav(1,129,'ssc','txssc1')">
 			<image class="img" src="../../static/happy/img_cfpz@3x.png" mode=""></image>
 		</view>
 		<view class="uni-happy-box3" @click="gotonav(2,131,'ssc','xyffssc')">
 			<image class="img" src="../../static/happy/img_szpz@3x.png" mode=""></image>
-		</view>
+		</view> -->
 		<view class="uni-happy-box4">
 			<view class="uni-happy-btn1">
 				<image class="img" src="../../static/happy/img_jr@2x.png" mode=""></image>
@@ -42,7 +40,14 @@
 </template>
 
 <script>
+	import {
+		mapState,
+		mapMutations
+	} from 'vuex'
 	export default {
+		computed: {
+			...mapState(['hasLogin', 'forcedLogin', 'userinfo'])
+		},
 		data() {
 			return {
 				lottery:[]
@@ -53,15 +58,21 @@
 		},
 		methods: {
 			gotonav(sign,id,typeid,cpname) {
-				if(sign === 1){
-					uni.navigateTo({
-						url: '../games/treasure?id=' + id +'&typeid=' + typeid+'&cpname='+cpname
-					});
-				}
+				this.lottery.map((item,index)=>{
+					if(item.title == '财富碰撞'&&sign == 1){
+						uni.navigateTo({
+							url: '../games/treasure?id=' + item.id +'&typeid=' + item.typeid+'&cpname='+item.name
+						});
+					}
+					if(item.title == '数字碰撞'&&sign == 2){
+						uni.navigateTo({
+							url: '../games/number?id=' + item.id +'&typeid=' + item.typeid+'&cpname='+item.name
+						});
+					}
+				})
+
 				if(sign === 2){
-					uni.navigateTo({
-						url: '../games/number?id=' + id +'&typeid=' + typeid+'&cpname='+cpname
-					});
+
 				}
 				// const _this = this;
 				// let _room_amount_limit = uni.getStorageSync('home_data').room_amount_limit;

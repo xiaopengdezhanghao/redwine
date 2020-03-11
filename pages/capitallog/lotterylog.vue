@@ -85,6 +85,7 @@
 			</view>
 		</view>
 		<view class="uni-loadmore" v-if="showLoadMore">{{loadMoreText}}</view>
+		<fr-loading></fr-loading>
 	</view>
 </template>
 
@@ -132,6 +133,7 @@
 			this.data = [],
 			this.loadMoreText = "加载更多",
 			this.showLoadMore = false;
+			
 		},
 		onReachBottom() {
 			console.log(this.max);
@@ -238,7 +240,7 @@
 				if(type == 1){ // //获取缓存的第一页数据
 					this.showLoadMore = false;
 					this.page = 1;
-					const data = uni.getStorageSync('my_lottery_data');
+					const data = uni.getStorageSync('my_lottery_data'+this.cpname);
 					if(data){ //如果有缓存过的数据 那么
 						this.setData(data)
 					}
@@ -260,7 +262,7 @@
 						this.setData(data, type)
 						if(type == 1){ //缓存第一页数据
 							uni.setStorage({
-								key: 'my_lottery_data',
+								key: 'my_lottery_data'+this.cpname,
 								data: data,
 								success: function () {
 									console.log('success');

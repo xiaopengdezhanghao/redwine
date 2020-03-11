@@ -14,7 +14,7 @@
 		</view>
 		<view class="uni-beans-content">
 			<view class="beans" @tap="goPage(1)">
-				<text class="beans-number">2000.00</text>
+				<text class="beans-number">{{userinfo.balance}}</text>
 				<text class="beans-text">欢乐豆</text>
 			</view>
 			<view style="width:2rpx;height:48rpx;background:rgba(165,166,171,1);"></view>

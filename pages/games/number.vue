@@ -4,7 +4,7 @@
 		<cover-view v-if="statuShow" style="position: absolute;top: 0; left: 0;display: flex;flex-direction: column;align-items: center;">
 			<uni-bar  left-icon="number" right-icon="number"  @clickRight="gameShows" title="数字碰撞"></uni-bar>
 			<view class="uni-input-text">
-				<text style="font-size:28rpx;font-family:PingFang SC;font-weight:500;color:rgba(254,254,254,1);z-index: 1;">欢乐豆余额：200.00</text>
+				<text style="font-size:28rpx;font-family:PingFang SC;font-weight:500;color:rgba(254,254,254,1);z-index: 1;">欢乐豆余额：{{userinfo.balance}}</text>
 			</view>
 			<view class="uni-issue">
 				<view class="issue-number" v-for="(item,index) in lastFullExpectArr" :key="index" :class="index == 0?'':'uni-move-img'">
@@ -85,7 +85,7 @@
 			</view>
 			<text class="uni-remind-text">恭喜您，投注成功!</text>
 			<view class="uni-remind-btn-content">
-				<view class="btn" style="margin-right: 48rpx; height: 121rpx;">
+				<view class="btn" style="margin-right: 48rpx; height: 121rpx;"  @tap="goGameShow(1)">
 					<image class="img"  src="../../static/games/number/icon_xxjl@2x.png" mode=""></image>
 				</view>
 				<view class="btn"  @tap="goon">
@@ -99,8 +99,14 @@
 <script>
 	import uniBar from "@/components/uni-nav-bar/uni-nav-bar-number.vue"
 	import uniPopup from "@/components/uni-popup/uni-popup.vue"
+	import {
+		mapState
+	} from 'vuex'
 	export default {
 	    components: {uniBar,uniPopup},
+		computed: {
+			...mapState(['userinfo'])
+		},
 		data(){
 			return{
 				screenWidth:0,
@@ -224,10 +230,12 @@
 				this.amount = 10
 				this.subCategoryData = data.data;
 				this.subCategoryList = this.subCategoryData[0];
-				// this.selectBettingData = this.subCategoryList[0].data;
-				this.selectBettingData = this.subCategoryList[4].data;
-				this.oneRate = this.selectBettingData[2].rate;
-				this.bothRate = this.selectBettingData[3].rate;
+				this.selectBettingData = this.subCategoryList[0].data;//正式服
+				// this.selectBettingData = this.subCategoryList[4].data;//测试服
+				// this.oneRate = this.selectBettingData[2].rate;//测试服
+				// this.bothRate = this.selectBettingData[3].rate;//测试服
+				this.oneRate = this.selectBettingData[0].rate;
+				this.bothRate = this.selectBettingData[1].rate;
 				this.selected_number(1);
 			},
 			//选择
@@ -236,12 +244,12 @@
 				this.bettingData = [];
 				this.btnImg = index;
 				if(index == 0){
-					// selectData = this.selectBettingData[0];
-					selectData = this.selectBettingData[2];
+					selectData = this.selectBettingData[0];//正式服
+					// selectData = this.selectBettingData[2];//测试服
 				}
 				if(index == 1){
-					// selectData = this.selectBettingData[1]
-					selectData = this.selectBettingData[3]
+					selectData = this.selectBettingData[1]//正式服
+					// selectData = this.selectBettingData[3]//测试服
 				}
 				this.bettingData.push({
 					"class2": selectData.class2,
