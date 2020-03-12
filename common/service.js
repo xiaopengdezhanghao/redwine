@@ -35,7 +35,7 @@ const api_lists = {
 	"get_issue_number":'Game/getIssueNumber',//获取期号
 	"get_old_game_info":'Game/getOldGameInfo',//	获取传统玩法游戏数据
 	"history_results":'Game/history_results',// 获取一个彩种开奖记录
-	"index":'Index/index',//首页
+	"games_index":'Index/index',//首页
 	"game_notes":'Game/get_game_notes',// 获取游戏说明
 	"lottery_log":'Record/betRecord',// 投注记录
 	"agent_commissionslog":'Agent/fanYongLists',// 返佣记录

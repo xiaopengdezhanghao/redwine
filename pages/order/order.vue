@@ -15,7 +15,10 @@
 			<view class="uni-red-info-content" @tap="goto(item.id)" v-if="(current-1) == item.is_delivery||current==0" v-for="(item,index) in orderList" :key="index">
 				<view class="uni-red-header">
 					<text class="header-number">订单号：{{item.order_sn}}</text>
-					<text class="header-text">已收款，处理中</text>
+					<text class="header-text" style="color: #8C8C8C;" v-if="item.status == 0">待收款</text>
+					<text class="header-text" v-else-if="item.status == 1">已收款，处理中</text>
+					<text class="header-text" v-else-if="item.status == 2">已收货</text>
+					<text class="header-text" style="color: #8C8C8C;" v-else-if="item.status == -1">取消</text>
 				</view>
 				<view class="uni-red-card">
 					<view class="card-img">
@@ -24,12 +27,16 @@
 					<view class="card-info-text">
 						<view class="card-info-money">
 							<text>{{item.title}}</text>
-							<text style="color: #FF8900;">2000.00</text>
+							<text style="color: #FF8900; font-size: 32rpx;">
+								<span style="height:15px;font-size:20rpx;font-family:PingFang SC;font-weight:bold;color:rgba(255,137,0,1); margin-right: 9rpx;">￥</span>
+								{{item.payed_price}}
+								<span style="height:15px;font-size:20rpx;font-family:PingFang SC;font-weight:500;color:rgba(165,166,171,1);margin-left: 13rpx;">×1</span>
+							</text>
 						</view>
 						<view class="card-info-num">
 							<text>共一件商品</text>
 							<text>合计：</text>
-							<text style="color: #FF8900;">{{item.payed_price}}</text>
+							<text style="color: #FF8900;font-size: 32rpx;"><span style="height:15px;font-size:20rpx;font-family:PingFang SC;font-weight:bold;color:rgba(255,137,0,1); margin-right: 9rpx;">￥</span>{{item.payed_price}}</text>
 						</view>
 					</view>
 				</view>
@@ -39,22 +46,17 @@
 				</view>
 			</view>
 		</view>
+		<footer-nav></footer-nav>
 	</view>
 </template>
 
 <script>
 	import uniNavBar from "@/components/uni-nav-bar/uni-nav-bar.vue"
 	import uniSegmentedControlOrder from "../../components/uni-segmented-control/uni-segmented-control-order.vue";
-	// import collectGoods from "./collectgoods.vue";
-	// import shipmentsGoods from "./shipments.vue";
-	// import allGoods from "./allgoods.vue";
 	export default {
 		components: {
 			uniNavBar,
 			uniSegmentedControlOrder,
-			// collectGoods,
-			// shipmentsGoods,
-			// allGoods
 			},
 		data() {
 			return {

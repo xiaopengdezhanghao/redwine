@@ -2,8 +2,8 @@
 	<view>
 		<view class="tab">
 			<view class="tab-box" @click="change_page(index)" :class="now_page_index==index?'tab-box-color':''" v-for="(item,index) in footer_nav" :key="index">
-				<image style="width: 32rpx; height: 32rpx;" :src="now_page_index == index?item.select_icon:item.icon"></image>
-				<text style="margin-left: 10rpx;" >{{item.name}}</text>
+				<image style="width: 40rpx; height: 40rpx;" :src="now_page_index == index?item.select_icon:item.icon"></image>
+				<text class="tab-box-title">{{item.name}}</text>
 			</view>
 		</view>
 		<!-- <view v-for="(item.index) in list" :key="index">{{item.name}}</view> -->
@@ -45,17 +45,24 @@
 		box-shadow: 4rpx 4rpx 10rpx #efefef;
 	}
 	.tab-box{
-		width: 160rpx;
-		height: 56rpx;
-		background-color: #ebecec;
-		border-radius: 28rpx 28rpx;
+		height: 100%;
+		width: 80rpx;
 		display: flex;
-		flex-direction: row;
+		flex-direction: column;
 		align-items: center;
 		justify-content: center;
+		color:rgba(165,166,171,1);
+	}
+	.tab-box-title{
+		height:20rpx;
+		font-size:20rpx;
+		font-family:PingFang SC;
+		font-weight:500;
+		
+		line-height: 20rpx;
+		margin-top: 10rpx;
 	}
 	.tab-box-color{
-		color: #f33628;
-		background-color: #fee7e5;
+		color:rgba(17,23,52,1)!important;
 	}
 </style>

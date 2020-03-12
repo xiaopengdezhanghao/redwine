@@ -127,9 +127,10 @@
 				})
 			},
 			getData() {
+				console.log("在我这里没");
 				const _this = this;		
 				_this.$ajax.get({
-					url: _this.$service.api_lists.index,
+					url: _this.$service.api_lists.games_index,
 					data: {},
 				}).then((res) => {
 					if (res.data.code == 1) {

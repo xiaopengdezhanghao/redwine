@@ -39,7 +39,7 @@ const store = new Vuex.Store({
 		            }
 		            
 		        ],
-				now_page_index:0,
+				now_page_index:2,
     },
     mutations: {
         login(state, usertoken) {
@@ -64,7 +64,7 @@ const store = new Vuex.Store({
 		change_page(state,index){
 			state.now_page_index = index;
 			let url = state.footer_nav[index].url;
-			uni.redirectTo({
+			uni.switchTab({
 				url:url
 			})
 		},

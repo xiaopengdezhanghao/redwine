@@ -35,9 +35,9 @@
 			<view class="sl">
 				<view class="shopnum">购买数量</view>
 				<view style="display: flex;">
-					<view class="jh"  @click="jia(-1)">-</view>
-					<input type="text" :value="value" class="sr"/>
-					<view class="jah" @click="jia(1)">+</view>
+					<view class="jh">-</view>
+					<input type="text" :disabled='true' value="1" class="sr"/>
+					<view class="jah">+</view>
 				</view>
 			</view>
 			<!-- 赠送欢乐豆 -->

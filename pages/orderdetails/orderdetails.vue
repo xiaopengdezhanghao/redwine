@@ -8,18 +8,23 @@
 		title="订单详情" 
 		@clickRight="right">
 		</uni-nav-bar>
+		
 		<view style="width: 750rpx; display: flex; flex-direction: column;align-items: center;">
-			<view style="width:686rpx;height:220rpx;
-			box-shadow:0rpx 5rpx 10rpx 0rpx rgba(177,176,176,1);
-			border-radius:10rpx;
-			">
-				<image style="width: 100%; height: 100%;" src="../../static/img/card1@3x.png" mode=""></image>
+
+			<view class="uni-order-details-header">
+				<view class="details-header-img">
+					<image style="width: 100%; height: 100%;" src="../../static/img/card1@2x.png" mode=""></image>
+				</view>
+				<text class="details-header-text" v-if="detailsList.status == 0">订单待付款</text>
+				<text class="details-header-text" v-if="detailsList.status == 1">订单处理中</text>
+				<text class="details-header-text" v-if="detailsList.status == 2">订单已收货</text>
+				<text class="details-header-text" v-if="detailsList.status == -1">订单取消</text>
 			</view>
 			<view class="email-content">
 				<view class="uni-card-email">
 					<view class="uni-card-text">
-						<text>张小乾 13828636654</text>
-						<text>北京市朝阳区前进路光华工业园2动201</text>
+						<text>{{detailsList.contactor}} {{detailsList.contactor_phone}}</text>
+						<text>{{detailsList.address}}</text>
 					</view>
 					<view class="uni-card-img">
 						<image style="width: 100%; height: 100%;" src="../../static/icon/icon_jt@3x.png" mode=""></image>
@@ -36,25 +41,32 @@
 					</view>
 					<view class="card-info-text">
 						<view class="card-info-money">
-							<text>WINEBOSS西班牙干红</text>
-							<text style="color: #FF8900;">2000.00</text>
+							<text>{{detailsList.title}}</text>
+							<text style="color: #FF8900; font-size: 32rpx;">
+								<span style="height:15px;font-size:20rpx;font-family:PingFang SC;font-weight:bold;color:rgba(255,137,0,1); margin-right: 9rpx;">￥</span>
+								{{detailsList.payed_price}}
+								<span style="height:15px;font-size:20rpx;font-family:PingFang SC;font-weight:500;color:rgba(165,166,171,1);margin-left: 13rpx;">×1</span>
+							</text>
 						</view>
 						<view class="card-info-num">
 							<text>共一件商品</text>
 							<text>合计：</text>
-							<text style="color: #FF8900;">2000.00</text>
+							<text style="color: #FF8900; font-size: 32rpx;">
+								<span style="height:15px;font-size:20rpx;font-family:PingFang SC;font-weight:bold;color:rgba(255,137,0,1); margin-right: 9rpx;">￥</span>
+								{{detailsList.payed_price}}
+							</text>
 						</view>
 					</view>
 			</view>
 			<view class="uni-card-order">
 				<text class="uni-card-order-text">订单信息</text>
-				<text class="uni-card-order-number">订单号：2020021712345601</text>
+				<text class="uni-card-order-number">订单号：{{detailsList.order_sn}}</text>
 			</view>
-			<view class="uni-detail-btn">
+			<view class="uni-detail-btn" v-if="detailsList.is_delivery == 1">
 				确认收货
 			</view>
 		</view>
-
+		<footer-nav></footer-nav>
 	</view>
 </template>
 
@@ -64,6 +76,7 @@
 		data() {
 			return {
 				id:'',
+				detailsList:{}
 			};
 		},
 		components:{
@@ -74,6 +87,11 @@
 			this.getOrderDetails();
 		},
 		methods:{
+			toPage(){
+				uni.navigateBack({
+					delta:1
+				})
+			},
 			right(){
 				
 			},
@@ -86,10 +104,8 @@
 					}
 				}).then((res)=>{
 					if(res.data.code == 1){
-						console.log("订单详细信息");
-						console.log(res);
+						this.detailsList = res.data.data;
 					}
-					console.log(res);
 				}).catch((err)=>{
 					console.log('request fail', err);
 				})
@@ -210,5 +226,25 @@
 		line-height: 80rpx;
 		text-align: center;
 		margin-top: 191rpx;
+	}
+	.uni-order-details-header{
+		position: relative;
+		.details-header-img{
+			width:686rpx;
+			height:220rpx;
+			box-shadow:0rpx 5rpx 10rpx 0rpx rgba(177,176,176,1);
+			border-radius:10rpx;
+		}
+		.details-header-text{
+			height:32rpx;
+			font-size:32rpx;
+			font-family:PingFang SC;
+			font-weight:bold;
+			color:rgba(255,255,255,1);
+			line-height:32rpx;
+			position: absolute;
+			top: 95rpx;
+			left: 121rpx;
+		}
 	}
 </style>

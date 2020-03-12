@@ -110,9 +110,7 @@
         },
 		methods: {
 			onClickLeft() {
-				uni.navigateBack({
-					delta:1
-				});
+				uni.navigateBack();
 				// this.$emit("clickLeft");
 			},
 			onClickRight() {
