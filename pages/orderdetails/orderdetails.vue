@@ -63,16 +63,37 @@
 	export default {
 		data() {
 			return {
-				
+				id:'',
 			};
 		},
 		components:{
 			uniNavBar
 		},
+		onLoad(option) {
+			this.id = option.id;
+			this.getOrderDetails();
+		},
 		methods:{
 			right(){
 				
-			}
+			},
+			getOrderDetails(){
+				
+				this.$ajax.get({
+					url:this.$service.api_lists.details,
+					data:{
+						id:this.id
+					}
+				}).then((res)=>{
+					if(res.data.code == 1){
+						console.log("订单详细信息");
+						console.log(res);
+					}
+					console.log(res);
+				}).catch((err)=>{
+					console.log('request fail', err);
+				})
+			},
 		}
 	}
 </script>

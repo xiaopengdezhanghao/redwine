@@ -101,6 +101,7 @@
 				// 	});
 				// 	return;
 				// }
+				this.mobile = this.trim(this.mobile);
 				let reg = /^1[3456789]\d{9}$/
 				if(!(reg.test(this.mobile))){ 
 					uni.showToast({
@@ -188,6 +189,10 @@
 			},
 			clear(){
 				this.mobile = ''
+			},
+			trim(str)
+			{
+			     return str.replace(/(^\s*)|(\s*$)/g,"");
 			},
 			sendCode() {
 				let reg = /^1[3456789]\d{9}$/

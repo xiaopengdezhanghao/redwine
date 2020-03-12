@@ -36,29 +36,13 @@
 				
 			}
 		},
-		created() {
-			this.getAllOrder();
+		props:{
+			
 		},
 		methods: {
 			goto(){
 				uni.redirectTo({
 					url:'../orderdetails/orderdetails'
-				})
-			},
-			getAllOrder(){
-				this.$ajax.get({
-					url:this.$service.api_lists.shop_order_index,
-					data:{
-						page:'1'
-					}
-				}).then((res)=>{
-					if(res.data.code == 1){
-						console.log("获取所有信息");
-						console.log(res);
-					}
-					console.log(res);
-				}).catch((err)=>{
-					console.log('request fail', err);
 				})
 			}
 		}

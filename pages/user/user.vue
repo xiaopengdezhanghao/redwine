@@ -19,7 +19,7 @@
 			</view>
 			<view style="width:2rpx;height:48rpx;background:rgba(165,166,171,1);"></view>
 			<view class="order" @tap="goPage(3)">
-				<text class="order-number">1</text>
+				<text class="order-number">{{orderNum}}</text>
 				<text class="order-text">订单</text>
 			</view>
 		</view>
@@ -82,6 +82,7 @@
 						'url': '../setting/setting'
 					}
 				],
+				orderNum:0
 			}
 		},
 		onPullDownRefresh() {
@@ -101,6 +102,7 @@
 			}
 			//初始化用户信息
 			this.userinfoarr(uni.getStorageSync("userinfo"));
+			this.getAllOrder();
 		},
 		onLoad() {
 			if (!this.$store.state.hasLogin) {
@@ -111,6 +113,7 @@
 			}
 			//初始化用户信息
 			this.userinfoarr(uni.getStorageSync("userinfo"));
+
 		},
 		methods: {
 			...mapMutations(['logout', 'userinfoarr']),
@@ -144,6 +147,32 @@
 				}).catch((err)=>{
 					console.log('request fail', err);
 				})
+			},
+			getAllOrder(){
+				this.$ajax.get({
+					url:this.$service.api_lists.shop_order_index,
+					data:{
+						page:'1'
+					}
+				}).then((res)=>{
+					if(res.data.code == 1){
+						let data = res.data.data;
+						this.setData(data);
+						uni.setStorage({
+							key: 'shop_order_index',
+							data: data,
+							success: function() {
+								console.log('success');
+							}
+						});
+					}
+					console.log(res);
+				}).catch((err)=>{
+					console.log('request fail', err);
+				})
+			},
+			setData(data){
+				this.orderNum = data.length;
 			}
 		}
 	}

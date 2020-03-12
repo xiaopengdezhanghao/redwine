@@ -24,6 +24,7 @@
             "path" : "pages/user/user",
             "style": {
             	"navigationStyle":"custom",
+				"enablePullDownRefresh":true,
             	"app-plus":{
             		"animationType":"zoom-out",
             		"animationDuration":300

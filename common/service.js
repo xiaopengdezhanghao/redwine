@@ -57,7 +57,7 @@ const api_lists = {
 	"details":"Shop_order/details",//信息页面
 	"addrea":"Shop_order/member_add_address",//添加用户
 	"member": "Shop_order/member_address",
-	"shop_order_index":"Shop_order/index",
+	"shop_order_index":"Shop_order/index",//获取订单信息
 
 
 	"activity":'Activity/index',//活动列表

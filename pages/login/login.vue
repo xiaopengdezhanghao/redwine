@@ -59,6 +59,7 @@
 				 * 客户端对账号信息进行一些必要的校验。
 				 * 实际开发中，根据业务需要进行处理，这里仅做示例。
 				 */
+				this.username = this.trim(this.username);
 				let reg = /^1[3456789]\d{9}$/
 				if(!(reg.test(this.username))){ 
 					uni.showToast({
@@ -103,6 +104,10 @@
 			},
 			clear(){
 				this.account="";
+			},
+			trim(str)
+			{
+			     return str.replace(/(^\s*)|(\s*$)/g,"");
 			}
 		},
 		onLoad() {
